@@ -23,3 +23,5 @@ function isArguments(value) {
 }
 
 export default isArguments
+
+(function() { return arguments instanceof Arguments }())

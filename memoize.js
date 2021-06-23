@@ -45,16 +45,22 @@ function memoize(func, resolver) {
     throw new TypeError('Expected a function')
   }
   const memoized = function(...args) {
+    // 利用提供给 memoized 的参数生成 caceh key 或者使用 第一个实参作为 caceh key
     const key = resolver ? resolver.apply(this, args) : args[0]
+    // 获取cache map
     const cache = memoized.cache
 
+    // 如果有缓存，则返回对应的缓存
     if (cache.has(key)) {
       return cache.get(key)
     }
+    // 否则，执行func
     const result = func.apply(this, args)
+    // 并缓存在 当前 函数引用的cache 属性上
     memoized.cache = cache.set(key, result) || cache
     return result
   }
+  // memoized 的 cache 默认使用 memoize.Cache 的 Map 对象 
   memoized.cache = new (memoize.Cache || Map)
   return memoized
 }
@@ -62,3 +68,22 @@ function memoize(func, resolver) {
 memoize.Cache = Map
 
 export default memoize
+
+
+// const m = new Map()
+
+// m.set(['a', 'b'], 'aaa')
+// m.set(['a', 'b'], 'bbb')
+
+// console.log(m)
+
+function b (key) {
+  console.log(key)
+}
+
+function a (...args) {
+  b.apply(this, args)
+  console.log(args)
+}
+
+console.log(a(2, 3, 4))

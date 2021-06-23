@@ -16,6 +16,9 @@ import baseFlatten from './.internal/baseFlatten.js'
  * at(object, ['a[0].b.c', 'a[1]'])
  * // => [3, 4]
  */
+// baseFlatten 返回一个字符串数组，该函数可以处理字符串，类数组，一维数组和多维数组
 const at = (object, ...paths) => baseAt(object, baseFlatten(paths, 1))
+
+
 
 export default at

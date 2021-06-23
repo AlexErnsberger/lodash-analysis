@@ -2,7 +2,8 @@ import get from '../get.js'
 
 /**
  * The base implementation of `at` without support for individual paths.
- *
+ * at 方法的基本实现，返回对应paths的值的数组
+ * 
  * @private
  * @param {Object} object The object to iterate over.
  * @param {string[]} paths The property paths to pick.
@@ -14,6 +15,7 @@ function baseAt(object, paths) {
   const result = new Array(length)
   const skip = object == null
 
+  // 下标0开始依次返回对应的值
   while (++index < length) {
     result[index] = skip ? undefined : get(object, paths[index])
   }

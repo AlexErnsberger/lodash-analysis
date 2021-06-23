@@ -7,7 +7,7 @@ import isFlattenable from './isFlattenable.js'
  * @param {Array} array 需要扁平化的数组
  * @param {number} depth 最大递归深度
  * @param {boolean} [predicate=isFlattenable] The function invoked per iteration.每次迭代调用的函数
- * @param {boolean} [isStrict] Restrict to values that pass `predicate` checks.
+ * @param {boolean} [isStrict] Restrict to values that pass `predicate` checks. 限制数组值通过predicate类型校验
  * @param {Array} [result=[]] The initial result value.
  * @returns {Array} Returns the new flattened array.
  */

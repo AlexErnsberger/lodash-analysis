@@ -25,3 +25,5 @@ function isObjectLike(value) {
 }
 
 export default isObjectLike
+
+console.log(typeof undefined)
