@@ -9,6 +9,7 @@ const toString = Object.prototype.toString
  */
 function getTag(value) {
   if (value == null) {
+    // 兼容javascript低版本，特殊处理null和undefined
     return value === undefined ? '[object Undefined]' : '[object Null]'
   }
   return toString.call(value)

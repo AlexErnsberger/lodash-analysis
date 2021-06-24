@@ -19,6 +19,7 @@ function baseGet(object, path) {
 
   while (object != null && index < length) {
     // tokey处理-0情况，length > 1 的时候循环处理嵌套属性
+    // 对于.开头的path参数，castPath返回的数组的第一项为''
     object = object[toKey(path[index++])]
   }
   return (index && index == length) ? object : undefined

@@ -19,11 +19,14 @@ import isPlainObject from './isPlainObject.js'
  * // => false
  */
 function isError(value) {
+  // 不是一个"类"对象
   if (!isObjectLike(value)) {
     return false
   }
+  // 获取对象错误类型
   const tag = getTag(value)
   return tag == '[object Error]' || tag == '[object DOMException]' ||
+  // error message 属性为 string 类型 并且 name 属性为 string 类型 并且不是通过直接调用Object构造函数直接创建的对象
     (typeof value.message === 'string' && typeof value.name === 'string' && !isPlainObject(value))
 }
 

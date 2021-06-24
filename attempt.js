@@ -3,7 +3,8 @@ import isError from './isError.js'
 /**
  * Attempts to invoke `func`, returning either the result or the caught error
  * object. Any additional arguments are provided to `func` when it's invoked.
- *
+ * 尝试执行传入的函数，返回执行函数的值或捕获错误对象。任意传递给attempt函数的额外参数都会传递给func
+ * 
  * @since 3.0.0
  * @category Util
  * @param {Function} func The function to attempt.

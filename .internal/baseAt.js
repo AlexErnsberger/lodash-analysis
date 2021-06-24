@@ -13,6 +13,7 @@ function baseAt(object, paths) {
   let index = -1
   const length = paths.length
   const result = new Array(length)
+  // object 为 null 或者 undefined时
   const skip = object == null
 
   // 下标0开始依次返回对应的值
