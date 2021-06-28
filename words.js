@@ -5,6 +5,8 @@ const hasUnicodeWord = RegExp.prototype.test.bind(
 )
 
 /** Used to match words composed of alphanumeric characters. */
+// 用于匹配由字母数字组成的单词
+// 0-48 58-64 91-96 124-128
 const reAsciiWord = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g
 
 function asciiWords(string) {

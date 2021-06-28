@@ -11,7 +11,9 @@ import slice from '../slice.js'
  */
 function castSlice(array, start, end) {
   const { length } = array
+  // 不传默认数组长度
   end = end === undefined ? length : end
+  // 调用slice方法
   return (!start && end >= length) ? array : slice(array, start, end)
 }
 

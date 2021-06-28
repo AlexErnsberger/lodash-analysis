@@ -16,6 +16,7 @@ const reHasUnicode = RegExp(`[${rsZWJ + rsAstralRange + rsComboRange + rsVarRang
 
 /**
  * Checks if `string` contains Unicode symbols.
+ * 字符串是否包含unicode编码
  *
  * @private
  * @param {string} string The string to inspect.

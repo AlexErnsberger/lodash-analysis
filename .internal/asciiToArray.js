@@ -6,6 +6,7 @@
  * @returns {Array} Returns the converted array.
  */
 function asciiToArray(string) {
+  // 调用split方法
   return string.split('')
 }
 

@@ -20,22 +20,32 @@
  */
 function slice(array, start, end) {
   let length = array == null ? 0 : array.length
+  // length为0返回空数组
   if (!length) {
     return []
   }
+  // start为null 或 undefined 默认为0
   start = start == null ? 0 : start
+  // end 为 undefined 默认数组长度
   end = end === undefined ? length : end
 
+  // start 为负数 则从后向前定位起始位置
   if (start < 0) {
     start = -start > length ? 0 : (length + start)
   }
+  // end 最大不能超过数组长度
   end = end > length ? length : end
+  // end为负数，从后向前确定截止位置
   if (end < 0) {
     end += length
   }
+  // 开始位置大于截止位置返回0 否则
+  // 无符号右移 取整
   length = start > end ? 0 : ((end - start) >>> 0)
+  // 无符号右移 取整
   start >>>= 0
 
+  // 返回对应的数组
   let index = -1
   const result = new Array(length)
   while (++index < length) {
