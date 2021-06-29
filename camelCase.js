@@ -26,12 +26,13 @@ const camelCase = (string) => (
   /**
    * 1. 先转换成string类型
    * 2. replace替换撇号' ’ 为空字符串
-   * 3. 
+   * 3. 传给words方法处理
+   * 4. 处理words返回的数组
    */
   words(toString(string).replace(/['\u2019]/g, '')).reduce((result, word, index) => {
-    // 当前字母转小写
+    // 当前单词转小写
     word = word.toLowerCase()
-    // index 不等于 0时 把当前word转换成大写 
+    // index 不等于 0时 把当前单词的第一个字母转换成大写 
     return result + (index ? upperFirst(word) : word)
   }, '')
 )

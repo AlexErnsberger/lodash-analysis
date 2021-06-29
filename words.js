@@ -1,12 +1,13 @@
 import unicodeWords from './.internal/unicodeWords.js'
 
+
 const hasUnicodeWord = RegExp.prototype.test.bind(
   /[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/
 )
-
+console.log(hasUnicodeWord('AaaAaaa'))
 /** Used to match words composed of alphanumeric characters. */
-// 用于匹配由字母数字组成的单词
-// 0-48 58-64 91-96 124-128
+// 用于匹配由字母数字组成的单词，除去了各种标点
+// 0-47 58-64 91-96 124-127
 const reAsciiWord = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g
 
 function asciiWords(string) {

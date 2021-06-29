@@ -59,7 +59,7 @@ const rsFitz = '\\ud83c[\\udffb-\\udfff]'
 const rsModifier = `(?:${rsCombo}|${rsFitz})`
 // 非星芒层
 const rsNonAstral = `[^${rsAstralRange}]`
-// 国家地图
+// 国家旗帜
 const rsRegional = '(?:\\ud83c[\\udde6-\\uddff]){2}'
 const rsSurrPair = '[\\ud800-\\udbff][\\udc00-\\udfff]'
 // 大写字母
@@ -91,6 +91,8 @@ const reUnicodeWords = RegExp([
   rsEmoji
 ].join('|'), 'g')
 
+console.log(reUnicodeWords)
+
 /**
  * Splits a Unicode `string` into an array of its words.
  *
@@ -102,4 +104,6 @@ function unicodeWords(string) {
   return string.match(reUnicodeWords)
 }
 
-export default unicodeWords
+console.log(unicodeWords('youarenotalone'))
+
+

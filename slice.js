@@ -3,7 +3,7 @@
  *
  * **Note:** This method is used instead of
  * [`Array#slice`](https://mdn.io/Array/slice) to ensure dense arrays are
- * returned.
+ * returned.这个方法确保密集型数组的返回
  *
  * @since 3.0.0
  * @category Array
