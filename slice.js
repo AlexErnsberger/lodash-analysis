@@ -55,3 +55,7 @@ function slice(array, start, end) {
 }
 
 export default slice
+var a = new Array(5)
+console.log(a[0])
+console.log(a)
+console.log(new Array(5), new Array(5).fill(undefined))
