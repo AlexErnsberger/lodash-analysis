@@ -5,6 +5,9 @@ import toFinite from './toFinite.js'
  *
  * **Note:** This method is loosely based on
  * [`ToInteger`](http://www.ecma-international.org/ecma-262/7.0/#sec-tointeger).
+ * toInteger 的宽松版本
+ * ToInteger 对于 Symbol类型的转换直接抛出TypeError
+ * 
  *
  * @since 4.0.0
  * @category Lang
@@ -26,9 +29,11 @@ import toFinite from './toFinite.js'
  * // => 3
  */
 function toInteger(value) {
+  // 转换为Number.MAX_VALUE Number.MIN_VALUE范围内的值
   const result = toFinite(value)
+  // 浮点数截取小数部分
   const remainder = result % 1
-
+  // 取整返回
   return remainder ? result - remainder : result
 }
 

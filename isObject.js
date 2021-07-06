@@ -23,6 +23,8 @@
  */
 function isObject(value) {
   const type = typeof value
+  // 例如：普通的对象，函数，数组，正则表达式对象，String构造函数生成的对象，Number构造函数生成的对象等等
+  // 关于Object类型的定义 https://262.ecma-international.org/7.0/#sec-object-type
   return value != null && (type === 'object' || type === 'function')
 }
 
