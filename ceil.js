@@ -1,8 +1,11 @@
 import createRound from './.internal/createRound.js'
 
+console.log(Math.ceil(0.2))
+
 /**
  * Computes `number` rounded up to `precision`. (Round up: the smallest integer greater than or equal to a given number.)
- *
+ * 向上取整，并可以根据 precision 参数对小数位或整数位向上取整
+ * 
  * @since 3.10.0
  * @category Math
  * @param {number} number The number to round up.
