@@ -14,6 +14,7 @@ class Stack {
    * @param {Array} [entries] The key-value pairs to cache.
    */
   constructor(entries) {
+    // 默认使用有序的ListCache作为数据存储器
     const data = this.__data__ = new ListCache(entries)
     this.size = data.size
   }
@@ -77,6 +78,7 @@ class Stack {
     let data = this.__data__
     if (data instanceof ListCache) {
       const pairs = data.__data__
+      // 超过数组最大长度限制，使用MapCache替换listCache
       if (pairs.length < LARGE_ARRAY_SIZE - 1) {
         pairs.push([key, value])
         this.size = ++data.size

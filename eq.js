@@ -29,6 +29,7 @@
  * // => true
  */
 function eq(value, other) {
+  // 特殊处理NaN NaN
   return value === other || (value !== value && other !== other)
 }
 

@@ -11,8 +11,11 @@ import Hash from './Hash.js'
  */
 function getMapData({ __data__ }, key) {
   const data = __data__
+  // 检查key是否为__proto__或者null
   return isKeyable(key)
+  // data[string] data[hash]
     ? data[typeof key === 'string' ? 'string' : 'hash']
+    // key不是常规属性，则使用原生map
     : data.map
 }
 
@@ -27,6 +30,7 @@ function isKeyable(value) {
   const type = typeof value
   return (type === 'string' || type === 'number' || type === 'symbol' || type === 'boolean')
     ? (value !== '__proto__')
+    // hashMap允许key为null
     : (value === null)
 }
 

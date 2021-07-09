@@ -21,12 +21,16 @@ const Buffer = moduleExports ? root.Buffer : undefined, allocUnsafe = Buffer ? B
  * @returns {Buffer} Returns the cloned buffer.
  */
 function cloneBuffer(buffer, isDeep) {
+  // 深度拷贝
   if (isDeep) {
+    // 返回一个新的 Buffer ，它引用与原始内存相同的内存
     return buffer.slice()
   }
   const length = buffer.length
+  // 生成一块新的内存（可能包含脏数据）
   const result = allocUnsafe ? allocUnsafe(length) : new buffer.constructor(length)
 
+  // 将原始数据copy到新内存中
   buffer.copy(result)
   return result
 }

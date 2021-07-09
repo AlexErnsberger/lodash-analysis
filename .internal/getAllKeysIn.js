@@ -9,10 +9,13 @@ import getSymbolsIn from './getSymbolsIn.js'
  */
 function getAllKeysIn(object) {
   const result = []
+  // 获取所有可枚举属性（原型链+对象本身）
   for (const key in object) {
     result.push(key)
   }
+  // 非数组
   if (!Array.isArray(object)) {
+    // 获取所有symbol属性（原型链+对象本身）
     result.push(...getSymbolsIn(object))
   }
   return result

@@ -1,5 +1,6 @@
 /**
  * A specialized version of `forEach` for arrays.
+ * 用于数组的“forEach”的专用版本
  *
  * @private
  * @param {Array} [array] The array to iterate over.

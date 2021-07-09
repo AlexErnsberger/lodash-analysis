@@ -1,7 +1,9 @@
 import baseClone from './.internal/baseClone.js'
 
 /** Used to compose bitmasks for cloning. */
+// 0001
 const CLONE_DEEP_FLAG = 1
+// 0100
 const CLONE_SYMBOLS_FLAG = 4
 
 /**
@@ -22,6 +24,7 @@ const CLONE_SYMBOLS_FLAG = 4
  * // => false
  */
 function cloneDeep(value) {
+  // 0101
   return baseClone(value, CLONE_DEEP_FLAG | CLONE_SYMBOLS_FLAG)
 }
 

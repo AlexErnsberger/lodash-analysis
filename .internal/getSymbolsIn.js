@@ -11,6 +11,7 @@ function getSymbolsIn(object) {
   const result = []
   while (object) {
     result.push(...getSymbols(object))
+    // Object(object) 兼容es5版本
     object = Object.getPrototypeOf(Object(object))
   }
   return result

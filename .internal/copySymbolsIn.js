@@ -10,6 +10,7 @@ import getSymbolsIn from './getSymbolsIn.js'
  * @returns {Object} Returns `object`.
  */
 function copySymbolsIn(source, object) {
+  // getSymbolsIn 获取原型链上可枚举的symbol属性
   return copyObject(source, getSymbolsIn(source), object)
 }
 

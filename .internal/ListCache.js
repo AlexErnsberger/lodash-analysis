@@ -16,6 +16,7 @@ class ListCache {
     this.clear()
     while (++index < length) {
       const entry = entries[index]
+      // key entry[0] value entry[1]
       this.set(entry[0], entry[1])
     }
   }
@@ -45,9 +46,11 @@ class ListCache {
       return false
     }
     const lastIndex = data.length - 1
+    // 优化，最后一项直接pop
     if (index == lastIndex) {
       data.pop()
     } else {
+    // 否则删除对应的项
       data.splice(index, 1)
     }
     --this.size
@@ -90,9 +93,11 @@ class ListCache {
     const data = this.__data__
     const index = assocIndexOf(data, key)
 
+    // 初始化
     if (index < 0) {
       ++this.size
       data.push([key, value])
+    // 已存在key则覆盖
     } else {
       data[index][1] = value
     }

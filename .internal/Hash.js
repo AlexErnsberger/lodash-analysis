@@ -79,7 +79,9 @@ class Hash {
    */
   set(key, value) {
     const data = this.__data__
+    // size++
     this.size += this.has(key) ? 0 : 1
+    // value 未传写入 HASH_UNDEFINED 默认值
     data[key] = value === undefined ? HASH_UNDEFINED : value
     return this
   }

@@ -5,6 +5,7 @@ import freeGlobal from './freeGlobal.js'
 const freeGlobalThis = typeof globalThis === 'object' && globalThis !== null && globalThis.Object == Object && globalThis
 
 /** Detect free variable `self`. */
+// https://developer.mozilla.org/en-US/docs/Web/API/Window/self
 const freeSelf = typeof self === 'object' && self !== null && self.Object === Object && self
 
 /** Used as a reference to the global object. */
