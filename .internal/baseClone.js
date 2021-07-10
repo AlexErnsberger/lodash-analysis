@@ -300,8 +300,12 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
 export default 
 
 const props = getAllKeysIn(value)
+const props = getAllKeys(value)
 
 arrayEach(props, (subValue, key) => {
+  // props e.g ['name', 'age']
+  // key = 'name'
+  // subvalue = value['name']
   key = subValue
   subValue = value[key]
   // Recursively populate clone (susceptible to call stack limits).
@@ -320,6 +324,17 @@ arrayEach(value, (subValue, key) => {
   assignValue(result, key, baseClone(subValue, bitmask, customizer, key, value, stack))
 })
 
+function initCloneByTag(object, tag, isDeep) {
+  // 获取对象构造函数的引用
+  const Ctor = object.constructor
+  switch (tag) {
+    ...
+    case symbolTag:
+      return cloneSymbol(object)
+  }
+}
+
+
 
 
 var str ="cabc"
@@ -331,3 +346,7 @@ var str5 = str.replace(/(a)(b)/, '$1') // cac
 var str6 = str.replace(/(?<test>b)(?<test2>c)/, '$<test>') // cab
 // c$bc cabc ccbc cbcbc cbc cabc
 console.log(str1, str2, str3, str4, str5, str6)
+
+
+var a = new ArrayBuffer(10)
+console.log(Buffer.isBuffer(a))

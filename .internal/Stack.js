@@ -75,8 +75,10 @@ class Stack {
    * @returns {Object} Returns the stack cache instance.
    */
   set(key, value) {
+    // 这是stack的this.__data__，该this.__data__引用ListCache或MapCache的实例
     let data = this.__data__
     if (data instanceof ListCache) {
+      // 这里的paris获取ListCache实例的__data__，数据保存在这里
       const pairs = data.__data__
       // 超过数组最大长度限制，使用MapCache替换listCache
       if (pairs.length < LARGE_ARRAY_SIZE - 1) {
@@ -84,6 +86,7 @@ class Stack {
         this.size = ++data.size
         return this
       }
+      // 替换当前的ListCache为MapCache，并将以保存pairs传入MapCache初始化
       data = this.__data__ = new MapCache(pairs)
     }
     data.set(key, value)

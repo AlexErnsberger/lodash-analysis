@@ -22,7 +22,8 @@ const Buffer = moduleExports ? root.Buffer : undefined, allocUnsafe = Buffer ? B
  */
 function cloneBuffer(buffer, isDeep) {
   // 深度拷贝
-  if (isDeep) {
+  // 原先为isDeep，这里我改掉了
+  if (!isDeep) {
     // 返回一个新的 Buffer ，它引用与原始内存相同的内存
     return buffer.slice()
   }

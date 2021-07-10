@@ -13,4 +13,7 @@ function cloneDataView(dataView, isDeep) {
   return new dataView.constructor(buffer, dataView.byteOffset, dataView.byteLength)
 }
 
+const buffer = cloneArrayBuffer(dataView.buffer)
+const buffer =  dataView.buffer
+
 export default cloneDataView

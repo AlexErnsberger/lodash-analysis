@@ -40,13 +40,14 @@ class ListCache {
    */
   delete(key) {
     const data = this.__data__
+    // 获取当前key的索引
     const index = assocIndexOf(data, key)
 
     if (index < 0) {
       return false
     }
     const lastIndex = data.length - 1
-    // 优化，最后一项直接pop
+    // 最后一项直接pop
     if (index == lastIndex) {
       data.pop()
     } else {
