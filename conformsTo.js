@@ -1,6 +1,5 @@
 import baseConformsTo from './.internal/baseConformsTo.js'
 import keys from './keys.js'
-
 /**
  * Checks if `object` conforms to `source` by invoking the predicate
  * properties of `source` with the corresponding property values of `object`.
@@ -23,8 +22,8 @@ import keys from './keys.js'
  * conformsTo(object, { 'b': function(n) { return n > 2 } })
  * // => false
  */
+
 function conformsTo(object, source) {
   return source == null || baseConformsTo(object, source, keys(source))
 }
 
-export default conformsTo

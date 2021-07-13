@@ -29,8 +29,11 @@ import isArrayLike from './isArrayLike.js'
  * // => ['0', '1']
  */
 function keys(object) {
+  // 类数组对象 不是一个函数 并且 包含一个length属性 最小值为0 最大值为Number.MAX_SAFE_INTEGER
   return isArrayLike(object)
+    // 默认不获取原型链上的属性 
     ? arrayLikeKeys(object)
+    // 调用Object.keys 返回自身可枚举属性
     : Object.keys(Object(object))
 }
 

@@ -9,6 +9,7 @@ import keys from '../keys.js'
  * @returns {Function} Returns the new spec function.
  */
 function baseConforms(source) {
+  // 获取source对象自身的可枚举属性
   const props = keys(source)
   return (object) => baseConformsTo(object, source, props)
 }

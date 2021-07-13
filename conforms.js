@@ -27,6 +27,7 @@ const CLONE_DEEP_FLAG = 1
  * // => [{ 'a': 1, 'b': 2 }]
  */
 function conforms(source) {
+  // baseClone 根据source生成一个新对象
   return baseConforms(baseClone(source, CLONE_DEEP_FLAG))
 }
 
