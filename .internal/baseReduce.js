@@ -13,7 +13,10 @@
  */
 function baseReduce(collection, iteratee, accumulator, initAccum, eachFunc) {
   eachFunc(collection, (value, index, collection) => {
+    // accumulator生成一个闭包
+    // accumulator第一次进来未赋值的情况下，默认设置为第一项
     accumulator = initAccum
+    // , 号表达式默认返回表达式右边的项
       ? (initAccum = false, value)
       : iteratee(accumulator, value, index, collection)
   })

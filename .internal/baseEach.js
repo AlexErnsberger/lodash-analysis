@@ -13,6 +13,8 @@ function baseEach(collection, iteratee) {
   if (collection == null) {
     return collection
   }
+  // 非数组，通过keys获取到对象的键生成一个数组
+  // 然后遍历该属性数组并传递给iteratee
   if (!isArrayLike(collection)) {
     return baseForOwn(collection, iteratee)
   }

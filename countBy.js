@@ -31,6 +31,7 @@ function countBy(collection, iteratee) {
     key = iteratee(value)
     if (hasOwnProperty.call(result, key)) {
       ++result[key]
+    // 初始化为1
     } else {
       baseAssignValue(result, key, 1)
     }
