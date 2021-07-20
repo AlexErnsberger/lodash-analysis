@@ -11,8 +11,12 @@ const hasOwnProperty = objectProto.hasOwnProperty
  * objects to the destination object for all destination properties that
  * resolve to `undefined`. Source objects are applied from left to right.
  * Once a property is set, additional values of the same property are ignored.
+ * 
+ * 把source对象上的（包括原型链上）可枚举属性赋值给object。如果object上已存在对应的属性
+ * 那么source对象上的属性会被忽略
  *
  * **Note:** This method mutates `object`.
+ * 这个方法修改了object
  *
  * @since 0.1.0
  * @category Object
@@ -33,7 +37,9 @@ function defaults(object, ...sources) {
       for (const key in source) {
         const value = object[key]
         if (value === undefined ||
+            // 原型对象的值相等并且 object不包含当前key
             (eq(value, objectProto[key]) && !hasOwnProperty.call(object, key))) {
+            // 赋值
           object[key] = source[key]
         }
       }
