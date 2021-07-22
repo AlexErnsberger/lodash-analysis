@@ -30,8 +30,9 @@ import createAssigner from './.internal/createAssigner.js'
  * mergeWith(object, other, customizer)
  * // => { 'a': [1, 3], 'b': [2, 4] }
  */
-const mergeWith = createAssigner((object, source, srcIndex, customizer) => {
-  baseMerge(object, source, srcIndex, customizer)
-})
+const assignFn = (object, source, srcIndex, customizer) => baseMerge(object, source, srcIndex, customizer)
+// 处理传入的参数
+// 剥离source 和 customizer
+const mergeWith = createAssigner(assignFn)
 
 export default mergeWith

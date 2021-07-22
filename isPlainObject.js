@@ -29,9 +29,9 @@ import isObjectLike from './isObjectLike.js'
  * // => true
  */
 function isPlainObject(value) {
-  if (!isObjectLike(value) || getTag(value) != '[object Object]') {
-    return false
-  }
+  // if (!isObjectLike(value) || getTag(value) != '[object Object]') {
+  //   return false
+  // }
   // 通过Object.create(null)创建的对象
   // console.log( Object.getPrototypeOf(Object.create(null)))
   if (Object.getPrototypeOf(value) === null) {
@@ -45,6 +45,6 @@ function isPlainObject(value) {
   return Object.getPrototypeOf(value) === proto
 }
 
-console.log(Object.getPrototypeOf(Object(1)))
+// console.log(Object.getPrototypeOf(Object(1)))
 
 export default isPlainObject

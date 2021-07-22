@@ -29,12 +29,16 @@ import toPlainObject from '../toPlainObject.js'
 function baseMergeDeep(object, source, key, srcIndex, mergeFunc, customizer, stack) {
   const objValue = object[key]
   const srcValue = source[key]
+  // 获取对应的引用
   const stacked = stack.get(srcValue)
 
+  // 存在重复引用，直接赋值，跳出递归
   if (stacked) {
     assignMergeValue(object, key, stacked)
     return
   }
+  // 递归 source[key] 是一个对象 
+  // 如果 object[key] 也是一个对象，调用customizer函数递归，否则直接返回object[key]
   let newValue = customizer
     ? customizer(objValue, srcValue, `${key}`, object, source, stack)
     : undefined
@@ -42,16 +46,18 @@ function baseMergeDeep(object, source, key, srcIndex, mergeFunc, customizer, sta
   let isCommon = newValue === undefined
 
   if (isCommon) {
+    // 源对象类数组判断
     const isArr = Array.isArray(srcValue)
     const isBuff = !isArr && isBuffer(srcValue)
     const isTyped = !isArr && !isBuff && isTypedArray(srcValue)
-
     newValue = srcValue
+    // 类数组处理
     if (isArr || isBuff || isTyped) {
       if (Array.isArray(objValue)) {
         newValue = objValue
       }
       else if (isArrayLikeObject(objValue)) {
+        // 生成一个新类数组
         newValue = copyArray(objValue)
       }
       else if (isBuff) {
@@ -66,12 +72,16 @@ function baseMergeDeep(object, source, key, srcIndex, mergeFunc, customizer, sta
         newValue = []
       }
     }
+    // 空对象处理 arguments处理
     else if (isPlainObject(srcValue) || isArguments(srcValue)) {
       newValue = objValue
+      // arguments转为普通对象
       if (isArguments(objValue)) {
         newValue = toPlainObject(objValue)
       }
+      // 函数或非对象
       else if (typeof objValue === 'function' || !isObject(objValue)) {
+        // 基于object的实例创建一个原型对象
         newValue = initCloneObject(srcValue)
       }
     }
@@ -85,6 +95,7 @@ function baseMergeDeep(object, source, key, srcIndex, mergeFunc, customizer, sta
     mergeFunc(newValue, srcValue, srcIndex, customizer, stack)
     stack['delete'](srcValue)
   }
+  // 赋值
   assignMergeValue(object, key, newValue)
 }
 

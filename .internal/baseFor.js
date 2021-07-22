@@ -2,7 +2,8 @@
  * The base implementation of `baseForOwn` which iterates over `object`
  * properties returned by `keysFunc` and invokes `iteratee` for each property.
  * Iteratee functions may exit iteration early by explicitly returning `false`.
- *
+ * baseForOwn的基础实现，遍历object 通过keysFunc返回的属性，并作为iteratee的参数执行
+ * 如果iteratee返回false可以提前退出循环
  * @private
  * @param {Object} object The object to iterate over.
  * @param {Function} iteratee The function invoked per iteration.

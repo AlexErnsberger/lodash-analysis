@@ -5,6 +5,7 @@ import eq from '../eq.js'
 
 /**
  * Checks if the given arguments are from an iteratee call.
+ * 检查给定的参数是否来自 iteratee 调用
  *
  * @private
  * @param {*} value The potential iteratee value argument.
@@ -19,6 +20,7 @@ function isIterateeCall(value, index, object) {
     return false
   }
   const type = typeof index
+  // 未处理type 为 symbol的情况
   if (type === 'number'
     ? (isArrayLike(object) && isIndex(index, object.length))
     : (type === 'string' && index in object)
