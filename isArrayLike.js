@@ -24,6 +24,8 @@ import isLength from './isLength.js'
  * // => false
  */
 function isArrayLike(value) {
+  // 排除isObjectLike的function
+  // 判断length是否是一个合法的length 即为number 整数 非负数 并且 在Number.MAX_SAFE_INTEGER之内
   return value != null && typeof value !== 'function' && isLength(value.length)
 }
 

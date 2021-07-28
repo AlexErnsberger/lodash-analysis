@@ -10,6 +10,7 @@ import last from './last.js'
  * determined by the first array. The iteratee is invoked with one argument:
  * (value).
  *
+ * 适用于数组中包含对象的情况
  * **Note:** Unlike `pullAllBy`, this method returns a new array.
  *
  * @since 4.0.0
@@ -24,7 +25,9 @@ import last from './last.js'
  * // => [1.2]
  */
 function differenceBy(array, ...values) {
+  // 获取values的最后一个参数iteratee
   let iteratee = last(values)
+  // iteratee 如果是一个类数组对象则直接设置为undefined，此时该方法等同于difference
   if (isArrayLikeObject(iteratee)) {
     iteratee = undefined
   }

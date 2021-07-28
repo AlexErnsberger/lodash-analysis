@@ -4,6 +4,7 @@ import strictIndexOf from './strictIndexOf.js'
 
 /**
  * The base implementation of `indexOf` without `fromIndex` bounds checks.
+ * Array.prototype.indexOf 的实现，没有fromIndex边界检查
  *
  * @private
  * @param {Array} array The array to inspect.
@@ -12,6 +13,7 @@ import strictIndexOf from './strictIndexOf.js'
  * @returns {number} Returns the index of the matched value, else `-1`.
  */
 function baseIndexOf(array, value, fromIndex) {
+  // 特殊处理NaN
   return value === value
     ? strictIndexOf(array, value, fromIndex)
     : baseFindIndex(array, baseIsNaN, fromIndex)

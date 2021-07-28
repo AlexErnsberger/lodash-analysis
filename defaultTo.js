@@ -17,6 +17,7 @@
  * // => 10
  */
 function defaultTo(value, defaultValue) {
+  // null undefined NaN
   return (value == null || value !== value) ? defaultValue : value
 }
 

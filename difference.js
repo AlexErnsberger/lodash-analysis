@@ -23,6 +23,7 @@ import isArrayLikeObject from './isArrayLikeObject.js'
  */
 function difference(array, ...values) {
   return isArrayLikeObject(array)
+    // baseFlatten 如果是嵌套数组之解构第一层
     ? baseDifference(array, baseFlatten(values, 1, isArrayLikeObject, true))
     : []
 }

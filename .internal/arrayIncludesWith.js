@@ -1,5 +1,6 @@
 /**
  * This function is like `arrayIncludes` except that it accepts a comparator.
+ * 与arrayIncludes相比，arrayIncludes是通过循环数组的值进行比较的，而该函数则是通过comparator函数进行比较
  *
  * @private
  * @param {Array} [array] The array to inspect.
