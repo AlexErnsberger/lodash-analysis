@@ -20,6 +20,7 @@ function createMathOperation(operator, defaultValue) {
     if (other !== undefined && value === undefined) {
       return other
     }
+    // 任意一个参数为string则全转为string处理
     if (typeof value === 'string' || typeof other === 'string') {
       value = baseToString(value)
       other = baseToString(other)

@@ -23,9 +23,11 @@ function baseToString(value) {
     // Recursively convert values (susceptible to call stack limits).
     return `${value.map(baseToString)}`
   }
+  // 处理symbol
   if (isSymbol(value)) {
     return symbolToString ? symbolToString.call(value) : ''
   }
+  // 处理-0
   const result = `${value}`
   return (result === '0' && (1 / value) === -INFINITY) ? '-0' : result
 }
