@@ -62,7 +62,7 @@ function toNumber(value) {
   if (isObject(value)) {
     // 优先调用valueOf方法
     const other = typeof value.valueOf === 'function' ? value.valueOf() : value
-    // 其次调用toString方法
+    // 其次对valueof调用toString方法
     value = isObject(other) ? `${other}` : other
   }
   // value不是string类型

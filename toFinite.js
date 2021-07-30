@@ -33,7 +33,7 @@ function toFinite(value) {
   if (!value) {
     return value === 0 ? value : 0
   }
-  // 转换为Number类型，不支持十六进制
+  // 转换为Number类型
   value = toNumber(value)
   // value值为INFINITY 或 -INFINITY 返回约等于  Number.MAX_VALUE 和 Number.MIN_VALUE的值
   if (value === INFINITY || value === -INFINITY) {
