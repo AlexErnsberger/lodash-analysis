@@ -44,4 +44,6 @@ function escape(string) {
     : (string || '')
 }
 
-export default escape
+console.log(escape('fred, barney, & pebbles'))
+
+// export default escape

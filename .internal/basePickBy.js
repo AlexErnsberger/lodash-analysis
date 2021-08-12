@@ -17,12 +17,20 @@ function basePickBy(object, paths, predicate) {
   const result = {}
 
   while (++index < length) {
+    // [prop]
     const path = paths[index]
+    // 获取value
     const value = baseGet(object, path)
+    // predicate(value, [prop])
     if (predicate(value, path)) {
+      // 设置对应的属性到result上
+      /*
+        castPath 把不是[prop]形式的path转换为[prop]形式
+      */
       baseSet(result, castPath(path, object), value)
     }
   }
+  // 返回
   return result
 }
 

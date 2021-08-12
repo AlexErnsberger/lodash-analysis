@@ -29,6 +29,7 @@ function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
   if (objLength != othLength && !isPartial) {
     return false
   }
+  // 判断属性是否存在
   let key
   let index = objLength
   while (index--) {
@@ -48,6 +49,7 @@ function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
 
   let compared
   let skipCtor = isPartial
+  // 判断值是否相等
   while (++index < objLength) {
     key = objProps[index]
     const objValue = object[key]

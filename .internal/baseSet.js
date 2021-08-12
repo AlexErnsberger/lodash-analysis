@@ -15,9 +15,11 @@ import toKey from './toKey.js'
  * @returns {Object} Returns `object`.
  */
 function baseSet(object, path, value, customizer) {
+  // 非对象直接返回
   if (!isObject(object)) {
     return object
   }
+  // 转换成[a]的形式
   path = castPath(path, object)
 
   const length = path.length
@@ -27,9 +29,11 @@ function baseSet(object, path, value, customizer) {
   let nested = object
 
   while (nested != null && ++index < length) {
+    // 处理-0 key
     const key = toKey(path[index])
     let newValue = value
 
+    // 多级嵌套
     if (index != lastIndex) {
       const objValue = nested[key]
       newValue = customizer ? customizer(objValue, key, nested) : undefined
@@ -39,6 +43,7 @@ function baseSet(object, path, value, customizer) {
           : (isIndex(path[index + 1]) ? [] : {})
       }
     }
+    // object[key] = newValue
     assignValue(nested, key, newValue)
     nested = nested[key]
   }

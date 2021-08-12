@@ -31,4 +31,7 @@ function filterObject(object, predicate) {
   return result
 }
 
-export default filterObject
+const object = { 'a': 5, 'b': 8, 'c': 10 }
+console.log(filterObject(object, (n) => !(n % 5)))
+
+// export default filterObject

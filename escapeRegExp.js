@@ -25,4 +25,6 @@ function escapeRegExp(string) {
     : (string || '')
 }
 
-export default escapeRegExp
+console.log(escapeRegExp('[lodash](https://lodash.com/)'))
+
+// export default escapeRegExp

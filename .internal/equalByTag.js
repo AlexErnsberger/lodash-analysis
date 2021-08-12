@@ -68,6 +68,7 @@ function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
     case errorTag:
       return object.name == other.name && object.message == other.message
 
+    // RegExp.prototype.toString 返回正则表达式的字符串版本
     case regexpTag:
     case stringTag:
       // Coerce regexes to strings and treat strings, primitives and objects,
@@ -75,29 +76,38 @@ function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {
       // for more details.
       return object == `${other}`
 
+    // map set 转换成数组
     case mapTag:
       let convert = mapToArray
 
     case setTag:
+      // 包含比较
       const isPartial = bitmask & COMPARE_PARTIAL_FLAG
       convert || (convert = setToArray)
 
+      // size不等且不是包含比较 返回false
       if (object.size != other.size && !isPartial) {
         return false
       }
       // Assume cyclic values are equal.
+      // 假设重复引用对象相等
       const stacked = stack.get(object)
       if (stacked) {
         return stacked == other
       }
+      // 0001 0010
+      // 默认为全量比较
       bitmask |= COMPARE_UNORDERED_FLAG
 
       // Recursively compare objects (susceptible to call stack limits).
+      // 递归调用equalArrays进行比较
       stack.set(object, other)
       const result = equalArrays(convert(object), convert(other), bitmask, customizer, equalFunc, stack)
+      // 比较完成后删除当前object引用
       stack['delete'](object)
       return result
 
+    // 计算Symbol对象的原始值
     case symbolTag:
       if (symbolValueOf) {
         return symbolValueOf.call(object) == symbolValueOf.call(other)

@@ -37,6 +37,8 @@ function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
   let objTag = objIsArr ? arrayTag : getTag(object)
   let othTag = othIsArr ? arrayTag : getTag(other)
 
+  // 特殊处理[object Arguments]
+  // 类数组按对象处理
   objTag = objTag == argsTag ? objectTag : objTag
   othTag = othTag == argsTag ? objectTag : othTag
 
@@ -44,19 +46,25 @@ function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
   const othIsObj = othTag == objectTag
   const isSameTag = objTag == othTag
 
+  // 二进制数据
   if (isSameTag && isBuffer(object)) {
+    // 这里处理了other不是二进制的情况
     if (!isBuffer(other)) {
       return false
     }
     objIsArr = true
     objIsObj = false
   }
+  // 比较数组，类数组（二进制数据（TypedArray））以及基本数据类型
   if (isSameTag && !objIsObj) {
+    // 处理重复引用
     stack || (stack = new Stack)
+    // array 或 TypedArray
     return (objIsArr || isTypedArray(object))
       ? equalArrays(object, other, bitmask, customizer, equalFunc, stack)
       : equalByTag(object, other, objTag, bitmask, customizer, equalFunc, stack)
   }
+  // 全量比较 特殊逻辑
   if (!(bitmask & COMPARE_PARTIAL_FLAG)) {
     const objIsWrapped = objIsObj && hasOwnProperty.call(object, '__wrapped__')
     const othIsWrapped = othIsObj && hasOwnProperty.call(other, '__wrapped__')
@@ -69,10 +77,12 @@ function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
       return equalFunc(objUnwrapped, othUnwrapped, bitmask, customizer, stack)
     }
   }
+  // 不同数据类型直接返回false
   if (!isSameTag) {
     return false
   }
   stack || (stack = new Stack)
+  // 对象比较
   return equalObjects(object, other, bitmask, customizer, equalFunc, stack)
 }
 
