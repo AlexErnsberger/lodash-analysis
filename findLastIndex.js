@@ -30,9 +30,12 @@ function findLastIndex(array, predicate, fromIndex) {
   }
   let index = length - 1
   if (fromIndex !== undefined) {
+    // 转换为正整数
     index = toInteger(fromIndex)
     index = fromIndex < 0
+      // 负数取length + index
       ? Math.max(length + index, 0)
+      // 正数取 index
       : Math.min(index, length - 1)
   }
   return baseFindIndex(array, predicate, index, true)

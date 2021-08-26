@@ -13,9 +13,9 @@
  */
 function baseFindIndex(array, predicate, fromIndex, fromRight) {
   const { length } = array
-  let index = fromIndex + (fromRight ? 1 : -1)
+  let index = fromIndex + (fromRight ? 0 : -1)
   while ((fromRight ? index-- : (++index < length))) {
-    // console.log(index)
+    console.log(index)
     if (predicate(array[index], index, array)) {
       return index
     }
@@ -23,12 +23,12 @@ function baseFindIndex(array, predicate, fromIndex, fromRight) {
   return -1
 }
 
-// const arr = [1, 2, 3, 4]
-// const predicate = (value, index) => {
-//   // console.log(index)
-//   return value === 1
-// }
-// baseFindIndex(arr, predicate, 3, true)
+const arr = [1, 2, 3, 4]
+const predicate = (value, index) => {
+  // console.log(index)
+  return value === 1
+}
+baseFindIndex(arr, predicate, 3, true)
 
 
-export default baseFindIndex
+// export default baseFindIndex

@@ -19,13 +19,17 @@ import isArrayLike from './isArrayLike.js'
  */
 function findLast(collection, predicate, fromIndex) {
   let iteratee
+  // 字符串包装为对象
   const iterable = Object(collection)
+  // 数组对象类型校验
   if (!isArrayLike(collection)) {
     collection = Object.keys(collection)
     iteratee = predicate
     predicate = (key) => iteratee(iterable[key], key, iterable)
   }
+  // 获取对应位置的索引
   const index = findLastIndex(collection, predicate, fromIndex)
+  // 返回值
   return index > -1 ? iterable[iteratee ? collection[index] : index] : undefined
 }
 

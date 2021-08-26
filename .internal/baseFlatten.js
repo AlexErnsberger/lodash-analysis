@@ -33,7 +33,7 @@ function baseFlatten(array, depth, predicate, isStrict, result) {
         // 等于 1 层 直接 解构
         result.push(...value)
       }
-    // 是否强制通过predicate 扁平化校验
+    // 将数组的项限制为通过predicate检查的值
     } else if (!isStrict) {
       result[result.length] = value
     }
