@@ -15,6 +15,7 @@ function getMatchData(object) {
   while (length--) {
     const key = result[length]
     const value = object[key]
+    // isStrictComparable 非NaN 非对象
     result[length] = [key, value, isStrictComparable(value)]
   }
   return result
